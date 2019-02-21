@@ -14,3 +14,24 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('about', function () {
+    $empresa = "MiskiLingo";
+    return view('about', ['empresa' => $empresa ]);
+});
+
+Route::get('bienvenido', function () {
+    return view('bienvenido');
+});
+
+Route::get('contacto', function () {
+    return view('contacto');
+});
+
+Route::get('elementos', function () {
+    return view('elementos');
+});
+
+Route::get('generico', function () {
+    return view('generico');
+});
