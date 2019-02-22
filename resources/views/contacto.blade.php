@@ -1,4 +1,7 @@
+@extends ('bienvendo')
+
 <!DOCTYPE HTML>
+
 <!--
 	Alpha by HTML5 UP
 	html5up.net | @ajlkn
@@ -9,38 +12,14 @@
 		<title>Contact - Alpha by HTML5 UP</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="/package/assets/css/main.css" />
 	</head>
 	<body class="is-preload">
 		<div id="page-wrapper">
 
-			<!-- Header -->
-				<header id="header">
-					<h1><a href="index.html">Alpha</a> by HTML5 UP</h1>
-					<nav id="nav">
-						<ul>
-							<li><a href="index.html">Home</a></li>
-							<li>
-								<a href="#" class="icon fa-angle-down">Layouts</a>
-								<ul>
-									<li><a href="generic.html">Generic</a></li>
-									<li><a href="contact.html">Contact</a></li>
-									<li><a href="elements.html">Elements</a></li>
-									<li>
-										<a href="#">Submenu</a>
-										<ul>
-											<li><a href="#">Option One</a></li>
-											<li><a href="#">Option Two</a></li>
-											<li><a href="#">Option Three</a></li>
-											<li><a href="#">Option Four</a></li>
-										</ul>
-									</li>
-								</ul>
-							</li>
-							<li><a href="#" class="button">Sign Up</a></li>
-						</ul>
-					</nav>
-				</header>
+            <!-- Header -->
+
+				@section ('header')
 
 			<!-- Main -->
 				<section id="main" class="container medium">
@@ -91,13 +70,13 @@
 		</div>
 
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.dropotron.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+			<script src="/package/assets/js/jquery.min.js"></script>
+			<script src="/package/assets/js/jquery.dropotron.min.js"></script>
+			<script src="/package/assets/js/jquery.scrollex.min.js"></script>
+			<script src="/package/assets/js/browser.min.js"></script>
+			<script src="/package/assets/js/breakpoints.min.js"></script>
+			<script src="/package/assets/js/util.js"></script>
+			<script src="/package/assets/js/main.js"></script>
 
 	</body>
 </html>
