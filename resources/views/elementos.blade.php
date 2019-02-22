@@ -26,13 +26,16 @@
 							<!--<li><a href="#" class="button">Sign Up</a></li>-->
 						</ul>
 					</nav>
-			    </header>
+                </header>
+                <section id="banner">
+                        <h2>Elementos</h2>
+						<p>Sólo una selección variada de elementos.</p>
+				</section>
 
 			<!-- Main -->
 				<section id="main" class="container">
 					<header>
-						<h2>Elementos</h2>
-						<p>Sólo una selección variada de elementos.</p>
+
 					</header>
 					<div class="row">
 						<div class="col-12">

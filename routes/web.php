@@ -32,6 +32,6 @@ Route::get('elementos', function () {
     return view('elementos');
 });
 
-Route::get('generico', function () {
-    return view('generico');
+Route::get('eventos', function () {
+    return view('eventos');
 });

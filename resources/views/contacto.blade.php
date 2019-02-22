@@ -1,4 +1,3 @@
-@extends ('bienvendo')
 
 <!DOCTYPE HTML>
 
@@ -19,7 +18,22 @@
 
             <!-- Header -->
 
-				@section ('header')
+            <header id="header" class="alt">
+					<h1><a href="/bienvenido">INICIO</a> -DerlingO Blog- </h1>
+					<nav id="nav">
+						<ul>
+							<li><a href="/bienvenido">Home</a></li>
+							<li><a href="/eventos">Eventos</a></li>
+							<li><a href="/contacto">Contacto</a></li>
+							<li><a href="/elementos">Elementos</a></li>
+							<!--<li><a href="#" class="button">Sign Up</a></li>-->
+						</ul>
+					</nav>
+                </header>
+                <section id="banner">
+                        <h2>Contactanos</h2>
+						<p>Si quieres ser parte de nuestro equipo puedes contactarnos.</p>
+				</section>
 
 			<!-- Main -->
 				<section id="main" class="container medium">

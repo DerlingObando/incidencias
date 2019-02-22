@@ -1,10 +1,6 @@
 
 <!DOCTYPE HTML>
-<!--
-	Alpha by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
+
 <html>
 	<head>
 		<title>BIENVENIDO</title>
@@ -22,7 +18,7 @@
 					<nav id="nav">
 						<ul>
 							<li><a href="/bienvenido">Home</a></li>
-							<li><a href="/generico">Generico</a></li>
+							<li><a href="/eventos">Eventos</a></li>
 							<li><a href="/contacto">Contacto</a></li>
 							<li><a href="/elementos">Elementos</a></li>
 							<!--<li><a href="#" class="button">Sign Up</a></li>-->
