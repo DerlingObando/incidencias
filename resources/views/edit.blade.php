@@ -67,7 +67,7 @@
 
         <form action="/entidades" method="POST" role="form">
         @csrf();
-            <legend>Guardar una etidad</legend>
+            <legend>editar una etidad</legend>
 
             <div class="form-group">
                 <label for="">Nombre de la entidad</label>
@@ -77,6 +77,7 @@
 
 
             <button type="submit" class="btn btn-primary">Guardar</button>
+            <button type="edit" class="btn btn-primary">edit</button>
         </form>
 
     </body>
