@@ -7,7 +7,7 @@
           <div class="pull-left"><h3>Entidades</h3></div>
           <div class="pull-right">
             <div class="btn-group">
-              <a href="{{ route('entidad.create') }}" class="btn btn-info" >Añadir Entidades</a>
+              <a href="{{route('entidad.create') }}" class="btn btn-info" >Añadir Entidades</a>
             </div>
           </div>
           <div class="table-container">
