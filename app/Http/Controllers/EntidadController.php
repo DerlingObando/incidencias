@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Entidad;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class EntidadController extends Controller
 {
@@ -14,7 +15,9 @@ class EntidadController extends Controller
      */
     public function index()
     {
-        //
+        $data['entidades'] = Entidad::paginate(10);
+
+        return view('entidades.list',$data);
     }
 
     /**
@@ -24,7 +27,7 @@ class EntidadController extends Controller
      */
     public function create()
     {
-        //
+        return view('entidades.create');
     }
 
     /**
@@ -35,7 +38,14 @@ class EntidadController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'entidad' => 'required',
+        ]);
+
+        Entidad::create($request->all());
+
+        return Redirect::to('entidades')
+       ->with('success','Great! Note created successfully.');
     }
 
     /**
@@ -44,7 +54,7 @@ class EntidadController extends Controller
      * @param  \App\Entidad  $entidad
      * @return \Illuminate\Http\Response
      */
-    public function show(Entidad $entidad)
+    public function show($id)
     {
         //
     }
@@ -55,9 +65,12 @@ class EntidadController extends Controller
      * @param  \App\Entidad  $entidad
      * @return \Illuminate\Http\Response
      */
-    public function edit(Entidad $entidad)
+    public function edit($id)
     {
-        //
+        $where = array('id' => $id);
+        $data['entidad'] = Entidad::where($where)->first();
+
+        return view('entidades.edit', $data);
     }
 
     /**
@@ -67,9 +80,17 @@ class EntidadController extends Controller
      * @param  \App\Entidad  $entidad
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Entidad $entidad)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'entidad' => 'required',
+        ]);
+
+        $update = ['entidad' => $request->entidad];
+        Entidad::where('id',$id)->update($update);
+
+        return Redirect::to('entidades')
+       ->with('success','Great! Notes updated successfully');
     }
 
     /**
@@ -78,8 +99,10 @@ class EntidadController extends Controller
      * @param  \App\Entidad  $entidad
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Entidad $entidad)
+    public function destroy($id)
     {
-        //
+        Entidad::where('id',$id)->delete();
+
+        return Redirect::to('entidades')->with('success','Entidad eliminada con éxito');
     }
 }
