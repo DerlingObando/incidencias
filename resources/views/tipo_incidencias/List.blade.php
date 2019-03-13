@@ -50,6 +50,7 @@
                 </form>
             </td>
           </tr>
+          <button type="button" class="btn btn-default">Normal</button>
           @endforeach
        </tbody>
     </table>
