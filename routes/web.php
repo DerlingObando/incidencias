@@ -22,4 +22,5 @@ Route::resource('cargos', 'CargoController');
 Route::resource('incidencias', 'IncidenciaController');
 Route::resource('modulos', 'ModuloController');
 Route::resource('sexos', 'SexoController');
+Route::resource('tipo_incidencias', 'TipoIncidenciaController');
 

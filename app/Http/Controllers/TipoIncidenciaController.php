@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\TipoIncidencia;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class TipoIncidenciaController extends Controller
 {
@@ -14,9 +15,9 @@ class TipoIncidenciaController extends Controller
      */
     public function index()
     {
-        $data['entidades'] = Entidad::paginate(10);
+        $data['tipo_incidencias'] = TipoIncidencia::paginate(10);
 
-        return view('entidades.list',$data);
+        return view('tipo_incidencias.list',$data);
     }
 
     /**
@@ -26,7 +27,7 @@ class TipoIncidenciaController extends Controller
      */
     public function create()
     {
-        return view('entidades.create');
+        return view('tipo_incidencias.create');
     }
 
     /**
@@ -38,19 +39,19 @@ class TipoIncidenciaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'entidad' => 'required',
+            'tipo' => 'required',
         ]);
 
-        Entidad::create($request->all());
+        TipoIncidencia::create($request->all());
 
-        return Redirect::to('entidades')
-       ->with('success','Bien! entidad creada con éxito.');
+        return Redirect::to('tipo_incidencias')
+       ->with('success','Bien! tipo creada con éxito.');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Entidad  $entidad
+     * @param  \App\TipoIncidencia  $tipo
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -61,47 +62,47 @@ class TipoIncidenciaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Entidad  $entidad
+     * @param  \App\TipoIncidencia  $tipo
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
         $where = array('id' => $id);
-        $data['entidad'] = Entidad::where($where)->first();
+        $data['tipo'] = TipoIncidencia::where($where)->first();
 
-        return view('entidades.edit', $data);
+        return view('tipo_incidencias.edit', $data);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Entidad  $entidad
+     * @param  \App\TipoIncidencia  $tipo
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         $request->validate([
-            'entidad' => 'required',
+            'tipo' => 'required',
         ]);
 
-        $update = ['entidad' => $request->entidad];
-        Entidad::where('id',$id)->update($update);
+        $update = ['tipo' => $request->tipo];
+        TipoIncidencia::where('id',$id)->update($update);
 
-        return Redirect::to('entidades')
-       ->with('success','Bien! Entidad actualizada con éxito');
+        return Redirect::to('tipo_incidencias')
+       ->with('success','Bien! TipoIncidencia actualizada con éxito');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Entidad  $entidad
+     * @param  \App\TipoIncidencia  $tipo
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        Entidad::where('id',$id)->delete();
+        TipoIncidencia::where('id',$id)->delete();
 
-        return Redirect::to('entidades')->with('success','Entidad eliminada con éxito');
+        return Redirect::to('tipo_incidencias')->with('success','TipoIncidencia eliminada con éxito');
     }
 }
