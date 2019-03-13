@@ -14,7 +14,9 @@ class PerfilController extends Controller
      */
     public function index()
     {
-        //
+        $data['entidades'] = Entidad::paginate(10);
+
+        return view('entidades.list',$data);
     }
 
     /**
@@ -24,7 +26,7 @@ class PerfilController extends Controller
      */
     public function create()
     {
-        //
+        return view('entidades.create');
     }
 
     /**
@@ -35,16 +37,23 @@ class PerfilController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'entidad' => 'required',
+        ]);
+
+        Entidad::create($request->all());
+
+        return Redirect::to('entidades')
+       ->with('success','Bien! entidad creada con éxito.');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Perfil  $perfil
+     * @param  \App\Entidad  $entidad
      * @return \Illuminate\Http\Response
      */
-    public function show(Perfil $perfil)
+    public function show($id)
     {
         //
     }
@@ -52,34 +61,47 @@ class PerfilController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Perfil  $perfil
+     * @param  \App\Entidad  $entidad
      * @return \Illuminate\Http\Response
      */
-    public function edit(Perfil $perfil)
+    public function edit($id)
     {
-        //
+        $where = array('id' => $id);
+        $data['entidad'] = Entidad::where($where)->first();
+
+        return view('entidades.edit', $data);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Perfil  $perfil
+     * @param  \App\Entidad  $entidad
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Perfil $perfil)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'entidad' => 'required',
+        ]);
+
+        $update = ['entidad' => $request->entidad];
+        Entidad::where('id',$id)->update($update);
+
+        return Redirect::to('entidades')
+       ->with('success','Bien! Entidad actualizada con éxito');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Perfil  $perfil
+     * @param  \App\Entidad  $entidad
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Perfil $perfil)
+    public function destroy($id)
     {
-        //
+        Entidad::where('id',$id)->delete();
+
+        return Redirect::to('entidades')->with('success','Entidad eliminada con éxito');
     }
 }

@@ -6,5 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Perfil extends Model
 {
-    protected $table = 'perfiles';
+    protected $table = 'entidades';
+
+    protected $fillable = ['entidad'];
 }

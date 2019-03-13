@@ -45,7 +45,7 @@ class EntidadController extends Controller
         Entidad::create($request->all());
 
         return Redirect::to('entidades')
-       ->with('success','Great! Note created successfully.');
+       ->with('success','Bien! entidad creada con éxito.');
     }
 
     /**
@@ -90,7 +90,7 @@ class EntidadController extends Controller
         Entidad::where('id',$id)->update($update);
 
         return Redirect::to('entidades')
-       ->with('success','Great! Notes updated successfully');
+       ->with('success','Bien! Entidad actualizada con éxito');
     }
 
     /**

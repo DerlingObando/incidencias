@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Cargo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class CargoController extends Controller
 {
@@ -14,7 +15,9 @@ class CargoController extends Controller
      */
     public function index()
     {
-        //
+        $data['cargos'] = Cargo::paginate(10);
+
+        return view('cargos.list',$data);
     }
 
     /**
@@ -24,7 +27,7 @@ class CargoController extends Controller
      */
     public function create()
     {
-        //
+        return view('cargos.create');
     }
 
     /**
@@ -35,7 +38,14 @@ class CargoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'cargo' => 'required',
+        ]);
+
+        Cargo::create($request->all());
+
+        return Redirect::to('cargos')
+       ->with('success','Bien! cargo creada con éxito.');
     }
 
     /**
@@ -44,7 +54,7 @@ class CargoController extends Controller
      * @param  \App\Cargo  $cargo
      * @return \Illuminate\Http\Response
      */
-    public function show(Cargo $cargo)
+    public function show($id)
     {
         //
     }
@@ -55,9 +65,12 @@ class CargoController extends Controller
      * @param  \App\Cargo  $cargo
      * @return \Illuminate\Http\Response
      */
-    public function edit(Cargo $cargo)
+    public function edit($id)
     {
-        //
+        $where = array('id' => $id);
+        $data['cargo'] = Cargo::where($where)->first();
+
+        return view('cargos.edit', $data);
     }
 
     /**
@@ -67,9 +80,17 @@ class CargoController extends Controller
      * @param  \App\Cargo  $cargo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cargo $cargo)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'cargo' => 'required',
+        ]);
+
+        $update = ['cargo' => $request->cargo];
+        Cargo::where('id',$id)->update($update);
+
+        return Redirect::to('cargos')
+       ->with('success','Bien! Cargo actualizada con éxito');
     }
 
     /**
@@ -78,8 +99,10 @@ class CargoController extends Controller
      * @param  \App\Cargo  $cargo
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Cargo $cargo)
+    public function destroy($id)
     {
-        //
+        Cargo::where('id',$id)->delete();
+
+        return Redirect::to('cargos')->with('success','Cargo eliminada con éxito');
     }
 }
