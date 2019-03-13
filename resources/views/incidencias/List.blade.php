@@ -3,10 +3,10 @@
 @section('content')
 <div class="row mt40">
    <div class="col-md-10">
-    <h3>Lista de Entidades</h3>
+    <h3>Lista de Incidencias</h3>
    </div>
    <div class="col-md-2">
-    <a href="{{ route('entidades.create') }}" class="btn btn-danger">Agregar Entidad</a>
+    <a href="{{ route('incidencias.create') }}" class="btn btn-danger">Agregar Incidencia</a>
    </div>
    <br><br>
     @if ($message = Session::get('success'))
@@ -28,18 +28,19 @@
        <thead>
           <tr>
              <th>Id</th>
-             <th>Entidad</th>
+             <th>Titulo</th>
+             <th>Descripción</th>
              <th>Created at</th>
              <td colspan="2">Acción</td>
           </tr>
        </thead>
        <tbody>
-          @foreach($entidades as $entidad)
+          @foreach($incidencias as $incidencia)
           <tr>
              <td>{{ $entidad->id }}</td>
-             <td>{{ $entidad->entidad }}</td>
-
-             <td>{{ date('d m Y', strtotime($entidad->created_at)) }}</td>
+             <td>{{ $incidencia->titulo}}</td>
+             <td>{{ $incidencia->descripion}}</td>
+             <td>{{ date('d m Y', strtotime($incidencia->created_at)) }}</td>
              <td><a href="{{ route('entidades.edit',$entidad->id)}}" class="btn btn-
                   primary">Editar</a></td>
                  <td>
@@ -53,7 +54,7 @@
           @endforeach
        </tbody>
     </table>
-    {!! $entidades->links() !!}
+    {!! $incidencias->links() !!}
 </div>
 @endsection
 </div>

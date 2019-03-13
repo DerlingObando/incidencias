@@ -1,11 +1,11 @@
-@extends('entidades.layout')
+@extends('incidencias.layout')
 
 @section('content')
 
 <div class="row">
     <div class="col-lg-12 mt40">
         <div class="pull-left">
-            <h3>Agregando entidad</h3>
+            <h3>Agregando incidencia</h3>
         </div>
     </div>
 </div>
@@ -21,14 +21,18 @@
     </div>
 @endif
 
-<form action="{{ route('entidades.store') }}" method="POST" name="entidad">
+<form action="{{ route('incidencias.store') }}" method="POST" name="incidencia">
     {{ csrf_field() }}
 
      <div class="row">
         <div class="col-md-12">
             <div class="form-group">
-                <strong>Entidad</strong>
-                <input type="text" name="entidad" class="form-control" placeholder="Ingrese la entidad">
+                <strong>Título</strong>
+                <input type="text" name="titulo" class="form-control" placeholder="Ingrese Incidencia">
+            </div>
+            <div class="form-group">
+                <strong>Descripción</strong>
+                <input type="text" name="descripcion" class="form-control" placeholder="Ingrese Descripción">
             </div>
         </div>
         <div class="col-md-12">

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Modulo extends Model
 {
-    protected $table = 'entidades';
+    protected $table = 'modulos';
 
-    protected $fillable = ['entidad'];
+    protected $fillable = ['modulo'];
 }

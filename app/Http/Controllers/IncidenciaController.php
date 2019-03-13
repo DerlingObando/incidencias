@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Incidencia;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class IncidenciaController extends Controller
 {
@@ -38,7 +39,8 @@ class IncidenciaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'entidad' => 'required',
+            'titulo' => 'required',
+            'descripcion' => 'required',
         ]);
 
         Incidencia::create($request->all());
@@ -50,7 +52,7 @@ class IncidenciaController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Incidencia  $entidad
+     * @param  \App\Incidencia  $incidencia
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -61,7 +63,7 @@ class IncidenciaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Incidencia  $entidad
+     * @param  \App\Incidencia  $incidencia
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -76,17 +78,18 @@ class IncidenciaController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Incidencia  $entidad
+     * @param  \App\Incidencia  $incidencia
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         $request->validate([
-            'entidad' => 'required',
+            'titulo' => 'required',
+            'descripcion' => 'required',
         ]);
 
-        $update = ['entidad' => $request->entidad];
-        Incidencia::where('id',$id)->update($update);
+        $update = ['titulo' => $request->titulo, 'description' => $request->descripcion];
+        Note::where('id',$id)->update($update);
 
         return Redirect::to('incidencias')
        ->with('success','Bien! Incidencia actualizada con éxito');
@@ -95,7 +98,7 @@ class IncidenciaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Incidencia  $entidad
+     * @param  \App\Incidencia  $incidencia
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

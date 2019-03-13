@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Modulo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class ModuloController extends Controller
 {
@@ -14,9 +15,9 @@ class ModuloController extends Controller
      */
     public function index()
     {
-        $data['entidades'] = Entidad::paginate(10);
+        $data['modulos'] = Modulo::paginate(10);
 
-        return view('entidades.list',$data);
+        return view('modulos.list',$data);
     }
 
     /**
@@ -26,7 +27,7 @@ class ModuloController extends Controller
      */
     public function create()
     {
-        return view('entidades.create');
+        return view('modulos.create');
     }
 
     /**
@@ -38,19 +39,19 @@ class ModuloController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'entidad' => 'required',
+            'modulo' => 'required',
         ]);
 
-        Entidad::create($request->all());
+        Modulo::create($request->all());
 
-        return Redirect::to('entidades')
-       ->with('success','Bien! entidad creada con éxito.');
+        return Redirect::to('modulos')
+       ->with('success','Bien! modulo creada con éxito.');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Entidad  $entidad
+     * @param  \App\Modulo  $modulo
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -61,47 +62,47 @@ class ModuloController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Entidad  $entidad
+     * @param  \App\Modulo  $modulo
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
         $where = array('id' => $id);
-        $data['entidad'] = Entidad::where($where)->first();
+        $data['modulo'] = Modulo::where($where)->first();
 
-        return view('entidades.edit', $data);
+        return view('modulos.edit', $data);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Entidad  $entidad
+     * @param  \App\Modulo  $modulo
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         $request->validate([
-            'entidad' => 'required',
+            'modulo' => 'required',
         ]);
 
-        $update = ['entidad' => $request->entidad];
-        Entidad::where('id',$id)->update($update);
+        $update = ['modulo' => $request->modulo];
+        Modulo::where('id',$id)->update($update);
 
-        return Redirect::to('entidades')
-       ->with('success','Bien! Entidad actualizada con éxito');
+        return Redirect::to('modulos')
+       ->with('success','Bien! Modulo actualizada con éxito');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Entidad  $entidad
+     * @param  \App\Modulo  $modulo
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        Entidad::where('id',$id)->delete();
+        Modulo::where('id',$id)->delete();
 
-        return Redirect::to('entidades')->with('success','Entidad eliminada con éxito');
+        return Redirect::to('modulos')->with('success','Modulo eliminada con éxito');
     }
 }

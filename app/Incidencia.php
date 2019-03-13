@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Incidencia extends Model
 {
-    protected $table = 'entidades';
+    protected $table = 'incidencias';
 
-    protected $fillable = ['entidad'];
+    protected $fillable = ['titulo', 'descripcion'];
 }

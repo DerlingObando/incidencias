@@ -1,11 +1,11 @@
-@extends('entidades.layout')
+@extends('modulos.layout')
 
 @section('content')
 
 <div class="row">
     <div class="col-lg-12 mt40">
         <div class="pull-left">
-            <h3>Actualizar entidad</h3>
+            <h3>Actualizar modulo</h3>
         </div>
     </div>
 </div>
@@ -21,15 +21,15 @@
     </div>
 @endif
 
-<form action="{{ route('entidades.update', $entidad->id) }}" method="POST" name="entidad">
+<form action="{{ route('modulos.update', $modulo->id) }}" method="POST" name="modulo">
     {{ csrf_field() }}
     @method('PATCH')
 
      <div class="row">
         <div class="col-md-12">
             <div class="form-group">
-                <strong>Entidad</strong>
-                <input type="text" name="entidad" class="form-control" placeholder="Ingrese la entidad" value="{{ $entidad->entidad}}">
+                <strong>Modulo</strong>
+                <input type="text" name="modulo" class="form-control" placeholder="Ingrese la modulo" value="{{ $modulo->modulo}}">
             </div>
         </div>
 
