@@ -1,11 +1,11 @@
-@extends('entidades.layout')
+@extends('sexos.layout')
 
 @section('content')
 
 <div class="row">
     <div class="col-lg-12 mt40">
         <div class="pull-left">
-            <h3>Agregando entidad</h3>
+            <h3>Agregando sexo</h3>
         </div>
     </div>
 </div>
@@ -21,14 +21,14 @@
     </div>
 @endif
 
-<form action="{{ route('entidades.store') }}" method="POST" name="entidad">
+<form action="{{ route('sexos.store') }}" method="POST" name="sexo">
     {{ csrf_field() }}
 
      <div class="row">
         <div class="col-md-12">
             <div class="form-group">
-                <strong>Entidad</strong>
-                <input type="text" name="entidad" class="form-control" placeholder="Ingrese la entidad">
+                <strong>Sexo</strong>
+                <input type="text" name="sexo" class="form-control" placeholder="Ingrese la sexo">
             </div>
         </div>
         <div class="col-md-12">

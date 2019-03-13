@@ -21,5 +21,5 @@ Route::resource('entidades', 'EntidadController');
 Route::resource('cargos', 'CargoController');
 Route::resource('incidencias', 'IncidenciaController');
 Route::resource('modulos', 'ModuloController');
-Route::resource('cargos', 'CargoController');
+Route::resource('sexos', 'SexoController');
 

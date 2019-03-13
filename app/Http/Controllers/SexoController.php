@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Sexo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class SexoController extends Controller
 {
@@ -14,9 +15,9 @@ class SexoController extends Controller
      */
     public function index()
     {
-        $data['entidades'] = Entidad::paginate(10);
+        $data['sexos'] = Sexo::paginate(10);
 
-        return view('entidades.list',$data);
+        return view('sexos.list',$data);
     }
 
     /**
@@ -26,7 +27,7 @@ class SexoController extends Controller
      */
     public function create()
     {
-        return view('entidades.create');
+        return view('sexos.create');
     }
 
     /**
@@ -38,19 +39,19 @@ class SexoController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'entidad' => 'required',
+            'sexo' => 'required',
         ]);
 
-        Entidad::create($request->all());
+        Sexo::create($request->all());
 
-        return Redirect::to('entidades')
-       ->with('success','Bien! entidad creada con éxito.');
+        return Redirect::to('sexos')
+       ->with('success','Bien! sexo creada con éxito.');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Entidad  $entidad
+     * @param  \App\Sexo  $sexo
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -61,47 +62,47 @@ class SexoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Entidad  $entidad
+     * @param  \App\Sexo  $sexo
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
         $where = array('id' => $id);
-        $data['entidad'] = Entidad::where($where)->first();
+        $data['sexo'] = Sexo::where($where)->first();
 
-        return view('entidades.edit', $data);
+        return view('sexos.edit', $data);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Entidad  $entidad
+     * @param  \App\Sexo  $sexo
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         $request->validate([
-            'entidad' => 'required',
+            'sexo' => 'required',
         ]);
 
-        $update = ['entidad' => $request->entidad];
-        Entidad::where('id',$id)->update($update);
+        $update = ['sexo' => $request->sexo];
+        Sexo::where('id',$id)->update($update);
 
-        return Redirect::to('entidades')
-       ->with('success','Bien! Entidad actualizada con éxito');
+        return Redirect::to('sexos')
+       ->with('success','Bien! Sexo actualizada con éxito');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Entidad  $entidad
+     * @param  \App\Sexo  $sexo
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        Entidad::where('id',$id)->delete();
+        Sexo::where('id',$id)->delete();
 
-        return Redirect::to('entidades')->with('success','Entidad eliminada con éxito');
+        return Redirect::to('sexos')->with('success','Sexo eliminada con éxito');
     }
 }
